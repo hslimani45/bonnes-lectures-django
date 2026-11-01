@@ -1,9 +1,9 @@
-# Bonnes Lectures
+# Framework Web 1 — Bonnes Lectures
 
-Application Django réalisée en TP de Framework Web à l’Université d’Orléans (2026–2027).
+Projet individuel réalisé en **L3 Informatique, parcours MIAGE**, dans le cours **Framework Web 1** à l’Université d’Orléans (2026–2027).
 On peut consulter des livres et leurs auteurs, puis se connecter pour ajouter des livres et publier des avis notés de 1 à 5.
 
-## Ce qui est fait
+## Fonctionnement
 
 - Ajout, modification et suppression de livres, d’auteurs et d’avis.
 - Connexion et déconnexion avec les comptes Django.
@@ -12,6 +12,12 @@ On peut consulter des livres et leurs auteurs, puis se connecter pour ajouter de
 - Protection contre la suppression d’un auteur qui possède encore des livres.
 
 Le projet utilise Python, Django, SQLite et Bootstrap 5 via django-bootstrap5.
+
+## Lien avec le cours
+
+L’application a été construite progressivement pendant les TP : modèles et migrations, vues et gabarits HTML, formulaires, puis relations entre livres, auteurs et avis. Le TP6 ajoute l’authentification, les droits de modification et la pagination.
+
+Les principales notions mises en pratique sont l’ORM de Django, les relations entre modèles, la validation des formulaires et le contrôle des autorisations dans les vues. L’environnement des TP utilisait Docker ; les instructions ci-dessous permettent de lancer la version publiée directement avec Python.
 
 ## Lancer en local
 
@@ -42,4 +48,7 @@ La clé Django est lue depuis `DJANGO_SECRET_KEY`, ou générée au démarrage p
 
 Pour vérifier la configuration : `python manage.py check` depuis le dossier contenant `manage.py`. Le fichier de tests du TP ne contient pas encore de tests automatisés.
 
-Hassan Slimani
+## Autres projets universitaires
+
+- [Système mono-tâche — compilateur Jack et Snake](https://github.com/hslimani45/monotache)
+- [POO — Morpion, Puissance 4 et Nim](https://github.com/hslimani45/Morpion-puissance4)
