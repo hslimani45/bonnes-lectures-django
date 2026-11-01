@@ -1,4 +1,4 @@
-# Framework Web 1 — Bonnes Lectures
+# Bonnes Lectures — application Django
 
 Projet individuel réalisé en **L3 Informatique, parcours MIAGE**, dans le cours **Framework Web 1** à l’Université d’Orléans (2026–2027).
 On peut consulter des livres et leurs auteurs, puis se connecter pour ajouter des livres et publier des avis notés de 1 à 5.
@@ -13,7 +13,7 @@ On peut consulter des livres et leurs auteurs, puis se connecter pour ajouter de
 
 Le projet utilise Python, Django, SQLite et Bootstrap 5 via django-bootstrap5.
 
-## Lien avec le cours
+## Conception et progression
 
 L’application a été construite progressivement pendant les TP : modèles et migrations, vues et gabarits HTML, formulaires, puis relations entre livres, auteurs et avis. Le TP6 ajoute l’authentification, les droits de modification et la pagination.
 
@@ -50,5 +50,5 @@ Pour vérifier la configuration : `python manage.py check` depuis le dossier con
 
 ## Autres projets universitaires
 
-- [Système mono-tâche — compilateur Jack et Snake](https://github.com/hslimani45/monotache)
-- [POO — Morpion, Puissance 4 et Nim](https://github.com/hslimani45/Morpion-puissance4)
+- [Système mono-tâche — compilateur Jack et Snake](https://github.com/hslimani45/systeme-monotache-jack)
+- [POO — Morpion, Puissance 4 et Nim](https://github.com/hslimani45/jeux-java-poo)
