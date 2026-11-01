@@ -1,0 +1,29 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Mes avis{% endblock %}
+
+{% block content %}
+
+<h1>Mes avis</h1>
+
+{% for review in reviews %}
+    <p>
+        Livre :
+        <a href="{% url 'book' review.book.id %}">
+            {{ review.book.title }}
+        </a>
+    </p>
+
+    <p>{{ review.body }}</p>
+    <p>Note : {{ review.rating }}/5</p>
+    <p>Date : {{ review.publication_date }}</p>
+
+    <a href="{% url 'edit_review' review.id %}">Modifier</a>
+    <a href="{% url 'delete_review' review.id %}">Supprimer</a>
+
+    <hr>
+{% empty %}
+    <p>Vous n'avez encore publié aucun avis.</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Supprimer un avis{% endblock %}
+
+{% block content %}
+
+<h1>Supprimer l'avis</h1>
+
+<p>Voulez-vous vraiment supprimer cet avis ?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Supprimer</button>
+</form>
+
+<a href="{% url 'book' review.book.id %}">Annuler</a>
+
+{% endblock %}

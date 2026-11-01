@@ -1,0 +1,59 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ book.title }}</h1>
+
+{% if book.cover_url %}
+    <img src="{{ book.cover_url }}" alt="Couverture de {{ book.title }}">
+{% endif %}
+
+<p>Auteur : {{ book.author }}</p>
+<p>Maison d'édition : {{ book.publisher }}</p>
+<p>Année : {{ book.year }}</p>
+<p>ISBN : {{ book.isbn }}</p>
+<p>{{ book.backCover }}</p>
+
+<h2>Avis</h2>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'new_review' book.id %}">Ajouter un avis</a>
+{% endif %}
+
+{% for review in reviews_page %}
+    <p>{{ review.body }}</p>
+    <p>Note : {{ review.rating }}/5</p>
+    <p>Date : {{ review.publication_date }}</p>
+
+    {% if review.user == user or user.is_superuser %}
+        <a href="{% url 'edit_review' review.id %}">Modifier l'avis</a>
+        <a href="{% url 'delete_review' review.id %}">Supprimer l'avis</a>
+    {% endif %}
+{% empty %}
+    <p>Aucun avis pour ce livre.</p>
+{% endfor %}
+
+{% if reviews_page.has_previous %}
+    <a href="?page={{ reviews_page.previous_page_number }}">Précédent</a>
+{% endif %}
+
+Page {{ reviews_page.number }} sur {{ reviews_page.paginator.num_pages }}
+
+{% if reviews_page.has_next %}
+    <a href="?page={{ reviews_page.next_page_number }}">Suivant</a>
+{% endif %}
+
+<br><br>
+
+{% if book.user == user or user.is_superuser %}
+    <a href="{% url 'edit_book' book.id %}">Modifier</a>
+    <a href="{% url 'delete_book' book.id %}">Supprimer</a>
+{% endif %}
+
+<br>
+
+<a href="{% url 'books' %}">Retour à la liste</a>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}{{ author }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ author }}</h1>
+
+<p>Prénom : {{ author.first_name }}</p>
+<p>Nom : {{ author.last_name }}</p>
+
+<h2>Livres</h2>
+
+<ul>
+    {% for book in author.books.all %}
+        <li>
+            <a href="{% url 'book' book.id %}">
+                {{ book.title }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Aucun livre pour cet auteur.</li>
+    {% endfor %}
+</ul>
+
+{% if author.user == user or user.is_superuser %}
+    <a href="{% url 'edit_author' author.id %}">Modifier</a>
+    <a href="{% url 'delete_author' author.id %}">Supprimer</a>
+{% endif %}
+
+<br>
+<a href="{% url 'authors' %}">Retour à la liste</a>
+
+{% endblock %}

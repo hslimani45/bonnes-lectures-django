@@ -1,0 +1,24 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<h1>Connexion</h1>
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <p>
+        {{ form.username.label_tag }}
+        {{ form.username }}
+    </p>
+
+    <p>
+        {{ form.password.label_tag }}
+        {{ form.password }}
+    </p>
+
+    <input type="submit" value="Se connecter">
+    <input type="hidden" name="next" value="/">
+</form>
+{% endblock %}

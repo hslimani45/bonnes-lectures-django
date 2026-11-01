@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Auteur{% endblock %}
+
+{% block content %}
+
+<h1>Auteur</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Enregistrer" %}
+</form>
+
+<a href="{% url 'authors' %}">Annuler</a>
+
+{% endblock %}

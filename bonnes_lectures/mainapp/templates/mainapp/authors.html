@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Auteurs{% endblock %}
+
+{% block content %}
+
+<h1>Auteurs</h1>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'new_author' %}">Ajouter un auteur</a>
+{% endif %}
+
+<ul>
+    {% for author in authors %}
+        <li>
+            <a href="{% url 'author' author.id %}">
+                {{ author }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Aucun auteur.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

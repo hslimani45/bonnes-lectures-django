@@ -1,0 +1,44 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Livres{% endblock %}
+
+{% block content %}
+
+<h1>Liste des livres</h1>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'new_book' %}">Ajouter un livre</a>
+{% endif %}
+
+<ul>
+    {% for book in page_obj %}
+        <li>
+            {{ book.author }} -
+            <a href="{% url 'book' book.id %}">{{ book.title }}</a>
+
+            {% if book.user == user or user.is_superuser %}
+                -
+                <a href="{% url 'edit_book' book.id %}">Modifier</a>
+                -
+                <a href="{% url 'delete_book' book.id %}">Supprimer</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Aucun livre disponible.</li>
+    {% endfor %}
+</ul>
+
+{% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">Précédent</a>
+{% endif %}
+
+Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Suivant</a>
+{% endif %}
+
+<br>
+<a href="/">Accueil</a>
+
+{% endblock %}

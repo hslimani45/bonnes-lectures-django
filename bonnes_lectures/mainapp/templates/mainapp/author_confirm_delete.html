@@ -1,0 +1,27 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Supprimer un auteur{% endblock %}
+
+{% block content %}
+
+<h1>Supprimer {{ author }}</h1>
+
+{% if error %}
+
+    <p>{{ error }}</p>
+    <a href="{% url 'author' author.id %}">Retour à l'auteur</a>
+
+{% else %}
+
+    <p>Voulez-vous vraiment supprimer cet auteur ?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+    </form>
+
+    <a href="{% url 'author' author.id %}">Annuler</a>
+
+{% endif %}
+
+{% endblock %}

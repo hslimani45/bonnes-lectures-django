@@ -1,0 +1,18 @@
+{% extends 'mainapp/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Ajouter un avis{% endblock %}
+
+{% block content %}
+
+<h1>Ajouter un avis</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Enregistrer" %}
+</form>
+
+<a href="{% url 'book' book.id %}">Retour au livre</a>
+
+{% endblock %}
